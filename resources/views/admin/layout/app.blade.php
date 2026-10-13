@@ -26,7 +26,7 @@
         <div class="h-20 flex items-center px-8 border-b border-zinc-800">
 
             <h1 class="text-3xl font-black tracking-wide">
-                LABO<span class="text-zinc-500">APP</span>
+                Show<span class="text-zinc-500">Case</span>
             </h1>
 
         </div>
@@ -104,6 +104,33 @@
                 </svg>
 
                 Permissions
+            </a>
+
+            <!-- Settings -->
+            <a href="{{ route('settings.index') }}"
+            class="flex items-center gap-4 px-5 py-4 rounded-2xl font-medium transition duration-200
+            {{ request()->routeIs('admin.settings.*')
+                ? 'bg-white text-black shadow-lg'
+                : 'text-white hover:bg-zinc-900' }}">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"/>
+
+                    <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.4 15a1.7 1.7 0 00.34 1.88l.06.06-1.8 1.8-.06-.06A1.7 1.7 0 0016.06 18a1.7 1.7 0 00-1.06 1.56V20h-2.5v-.44A1.7 1.7 0 0011.44 18a1.7 1.7 0 00-1.88.34l-.06.06-1.8-1.8.06-.06A1.7 1.7 0 008.1 14.66 1.7 1.7 0 006.54 13.6H6.1v-2.5h.44A1.7 1.7 0 008.1 10.04a1.7 1.7 0 00-.34-1.88L7.7 8.1l1.8-1.8.06.06A1.7 1.7 0 0011.44 6a1.7 1.7 0 001.06-1.56V4h2.5v.44A1.7 1.7 0 0016.06 6a1.7 1.7 0 001.88-.34L18 5.6l1.8 1.8-.06.06A1.7 1.7 0 0019.4 9.34a1.7 1.7 0 001.56 1.06h.44v2.5h-.44A1.7 1.7 0 0019.4 15z"/>
+
+                </svg>
+
+                <span>Settings</span>
             </a>
 
         </nav>

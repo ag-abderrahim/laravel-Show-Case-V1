@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ADashboardController;
 use App\Http\Controllers\admin\PermissionsController;
 use App\Http\Controllers\admin\RolesController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,28 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('users', UsersController::class);
         Route::put('/users-toggle-active/{user}', [UsersController::class, 'toggleActive'])->name('users.active');
         Route::put('/users-toggle-verify/{user}', [UsersController::class, 'toggleVerify'])->name('users.verify');
+
+        Route::get('/settings', [SettingController::class, 'index'])
+            ->name('settings.index');
+
+        Route::put('/settings', [SettingController::class, 'update'])
+            ->name('settings.update');
+
+        Route::delete('/settings/image/{key}', [SettingController::class, 'destroyImage'])
+            ->name('settings.image.destroy');
     });
+
+Route::middleware([
+    'auth',
+    'role:admin|editor|blogger'
+])
+->prefix('admin')
+->group(function () {
+
+    Route::get('dashboard', [ADashboardController::class, 'dashbaord'])->name('admin.dashboard');
+
+    // Other admin routes
+});
 
 // User
 Route::middleware(['auth', 'role:user'])
